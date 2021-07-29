@@ -1,0 +1,10 @@
+__pycache__/
+*.py[cod]
+*$py.class
+
+http_cache.sqlite
+pip-log.txt
+pip-delete-this-directory.txt
+
+venv/
+
