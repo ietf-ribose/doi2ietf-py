@@ -10,6 +10,9 @@
 import sys
 import argparse
 from string import ascii_lowercase
+from calendar import month_name
+
+from xml.sax.saxutils import escape
 
 import yaml
 
@@ -29,9 +32,6 @@ except ImportError:
 from simplejson.errors import JSONDecodeError
 
 
-# port https://github.com/cabo/kramdown-rfc2629/blob/master/bin/doilit
-
-
 HEADERS = {
     "Accept": "application/citeproc+json",
     "User-Agent": "DOI converter"
@@ -40,6 +40,36 @@ HEADERS = {
 
 def make_url(doi_id):
     return "https://data.crossref.org/%s" % doi_id
+
+
+def make_date_attrs(date_str):
+    year = None
+    month = None
+    day = None
+
+    if '-' in date_str:
+        _date = date_str.split('-')
+        year = _date[0]
+
+        if len(_date) > 1:
+            month = month_name[int(_date[1])]
+            if len(_date) > 2:
+                day = _date[2]
+
+    elif date_str.isdigit():
+        year = date_str
+
+    date_attr = ''
+    if year:
+        date_attr += ' year="%s"' % year
+    if month:
+        date_attr += ' month="%s"' % month
+    if day:
+        date_attr += ' day="%s"' % day
+
+    date_attr = date_attr.strip()
+
+    return date_attr
 
 
 def transform_doi_metadata(data):
@@ -106,6 +136,54 @@ def transform_doi_metadata(data):
     return result
 
 
+def make_xml(data):
+    # Convert dict to XML string as it doing at:
+    # https://github.com/cabo/kramdown-rfc2629/blob/d006536e2bab3aa9b8a70464710a725ca98a3051/lib/kramdown-rfc/refxml.rb#L14
+    output = ''
+
+    for ref in data:
+        output += '<reference anchor="%s">' % ref
+        output += '<front>'
+        output += '<title>'
+        output += escape(data[ref]['title'])
+        output += '</title>'
+        for author in data[ref]['author']:
+            if 'ins' in author:
+                output += '<author '
+                output += 'initials="%s" surname="%s" fullname="%s">' % (
+                    escape(author['ins'][0:2]),
+                    escape(author['ins'][2:]).strip(),
+                    escape(author['name'])
+                )
+
+            else:
+                # https://github.com/cabo/kramdown-rfc2629/blob/d006536e2bab3aa9b8a70464710a725ca98a3051/lib/kramdown-rfc/refxml.rb#L50
+                # is we need to copy that "heuristic" method?
+                output += '<author surname="%s">' % (
+                    escape(author['name'])
+                )
+
+            # organization empty: because input field is always empty
+            output += '<organization></organization>'
+            output += '</author>'
+
+        date_attr = make_date_attrs(data[ref]['date'])
+
+        if date_attr:
+            output += '<date %s/>' % date_attr
+
+        output += '</front>'
+
+        for name in data[ref]['seriesinfo']:
+            output += '<seriesInfo name="%s" value="%s"/>' % (
+                escape(name), (data[ref]['seriesinfo'][name])
+            )
+
+        output += '</reference>'
+
+    return output
+
+
 def author_name(authors):
     result = []
 
@@ -148,25 +226,31 @@ def parse_doi_list(lst):
             print("Unable to decode response from: %s " % doi_url)
 
         if json_data:
-            json_data = transform_doi_metadata(json_data)
+            # ascii enumerate:
+            doi_dict = {
+                ascii_lowercase[i]: transform_doi_metadata(json_data)
+            }
 
-            yaml.safe_dump(
-                # ascii enumerate:
-                {ascii_lowercase[i]: json_data},
-                sys.stdout,
-                allow_unicode=True,
-                default_flow_style=False
-            )
+            if ARGS.xml_output:
+                print(make_xml(doi_dict))
+            else:
+                yaml.safe_dump(
+                    doi_dict,
+                    sys.stdout,
+                    allow_unicode=True,
+                    default_flow_style=False
+                )
         i += 1
 
 
 PARSER = argparse.ArgumentParser(description="DOI 2 IETF converter")
+
 PARSER.add_argument(
     "doi_id_list",
     metavar="N",
     type=str,
     nargs="+",
-    help="an integer for the accumulator",
+    help="DOI ID",
 )
 
 PARSER.add_argument(
@@ -177,6 +261,13 @@ PARSER.add_argument(
     help="Use cache for HTTP-requests",
 )
 
+PARSER.add_argument(
+    "-x",
+    "--xml",
+    dest="xml_output",
+    action="store_true",
+    help="Output in XML",
+)
 
 ARGS = PARSER.parse_args()
 
