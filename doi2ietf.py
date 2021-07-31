@@ -158,7 +158,7 @@ def make_xml(data):
 
             else:
                 # https://github.com/cabo/kramdown-rfc2629/blob/d006536e2bab3aa9b8a70464710a725ca98a3051/lib/kramdown-rfc/refxml.rb#L50
-                # is we need to copy that "heuristic" method?
+                # do we need to copy that "heuristic" method?
                 output += '<author surname="%s">' % (
                     escape(author['name'])
                 )
