@@ -1,0 +1,102 @@
+a:
+  author:
+  - ins: N. Paskin
+    name: N. Paskin
+  date: 1999-07
+  seriesinfo:
+    DOI: 10.1109/5.771073
+    Proceedings of the IEEE: vol. 87, no. 7, pp. 1208-1227
+  title: Toward unique identifiers
+b:
+  author:
+  - ins: J. Voas
+    name: Jeffrey M Voas
+  date: '2016'
+  seriesinfo:
+    DOI: 10.6028/nist.sp.800-183
+    National Institute of Standards and Technology: report
+  title: Networks of 'things'
+c:
+  author:
+  - ins: A. Betzler
+    name: August Betzler
+  - ins: C. Gomez
+    name: Carles Gomez
+  - ins: I. Demirkol
+    name: Ilker Demirkol
+  - ins: J. Paradells
+    name: Josep Paradells
+  date: 2015-10
+  seriesinfo:
+    Ad Hoc Networks: vol. 33, pp. 126-139
+    DOI: 10.1016/j.adhoc.2015.04.007
+  title: 'CoCoA+: An advanced congestion control mechanism for CoAP'
+d:
+  author:
+  - ins: C. Bormann
+    name: Carsten Bormann
+  - ins: A. Castellani
+    name: Angelo P. Castellani
+  - ins: Z. Shelby
+    name: Zach Shelby
+  date: 2012-03
+  seriesinfo:
+    DOI: 10.1109/mic.2012.29
+    IEEE Internet Computing: vol. 16, no. 2, pp. 62-67
+  title: 'CoAP: An Application Protocol for Billions of Tiny Internet Nodes'
+e:
+  author:
+  - ins: A. Betzler
+    name: August Betzler
+  - ins: C. Gomez
+    name: Carles Gomez
+  - ins: I. Demirkol
+    name: Ilker Demirkol
+  - ins: J. Paradells
+    name: Josep Paradells
+  date: '2013-11-03'
+  seriesinfo:
+    DOI: 10.1145/2507924.2507954
+    Proceedings of the 16th ACM international conference on Modeling, analysis & simulation of wireless and mobile: systems
+  title: Congestion control in reliable CoAP communication
+f:
+  author:
+  - ins: D. Shotton
+    name: D. M. Shotton
+  - ins: "A. Rodr\xEDguez"
+    name: "A. Rodr\xEDguez"
+  - ins: N. Guil
+    name: N. Guil
+  - ins: O. Trelles
+    name: O. Trelles
+  date: 2002-01
+  seriesinfo:
+    DOI: 10.1046/j.0022-2720.2001.00966.x
+    Journal of Microscopy: vol. 205, no. 1, pp. 33-42
+  title: 'A metadata classification schema for semantic content analysis of videos:
+    A METADATA SCHEMA FOR VIDEO CONTENT ANALYSIS'
+g:
+  author:
+  - ins: C. Tsinaraki
+    name: Chrisa Tsinaraki
+  - ins: S. Christodoulakis
+    name: Stavros Christodoulakis
+  date: '2010-10-04'
+  seriesinfo:
+    DOI: 10.1002/9780470974582.ch12
+    The Handbook of MPEG Applications: pp. 293-316
+  title: Domain Knowledge Representation in Semantic MPEG-7 Descriptions
+h:
+  author:
+  - ins: A. Isaac
+    name: Antoine Isaac
+  - ins: T. Baker
+    name: Thomas Baker
+  date: 2015-04
+  seriesinfo:
+    Bulletin of the American Society for Information Science and Technology: vol.
+      41, no. 4, pp. 34-39
+    DOI: 10.1002/bult.2015.1720410411
+  title: 'Linked data practice at different levels of semantic precision: The perspective
+    of libraries, archives and museums: Linked Data Practice at Different Levels of
+    Semantic Precision: The Perspective of Libraries, Archives and Museums'
