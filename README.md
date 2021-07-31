@@ -19,7 +19,7 @@ Example:
 
 `./doi2ietf.py -c -x 10.1109/5.771073 10.1109/MIC.2012.29`
 
-To test and compare results you can use additional script `test_results.py`.
+To test and compare results you can use additional script `test/test_results.py`.
 Before start you need to edit and save config. Copy `config.py.sample` to `config.py` and edit values. At least you should write correct path to `doilit` at `path_to_ruby_doilit` variable. If this script not available, you can test and compare values saved at `path_to_test_output_dir`. To fetch new values via `doilit` you need to use `-nc` or --`no-cache` option:
  
-`./test_results.py -nc`
+`./test/test_results.py -nc`

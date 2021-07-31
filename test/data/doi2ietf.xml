@@ -1,0 +1,130 @@
+<?xml version='1.0' encoding='utf-8'?>
+<root>
+  <reference anchor="a">
+    <front>
+      <title>Toward unique identifiers</title>
+      <author initials="N." surname="Paskin" fullname="N. Paskin">
+        <organization/>
+      </author>
+      <date year="1999" month="July"/>
+    </front>
+    <seriesInfo name="DOI" value="10.1109/5.771073"/>
+    <seriesInfo name="Proceedings of the IEEE" value="vol. 87, no. 7, pp. 1208-1227"/>
+  </reference>
+  <reference anchor="b">
+    <front>
+      <title>Networks of 'things'</title>
+      <author initials="J." surname="Voas" fullname="Jeffrey M Voas">
+        <organization/>
+      </author>
+      <date year="2016"/>
+    </front>
+    <seriesInfo name="DOI" value="10.6028/nist.sp.800-183"/>
+    <seriesInfo name="National Institute of Standards and Technology" value="report"/>
+  </reference>
+  <reference anchor="c">
+    <front>
+      <title>CoCoA+: An advanced congestion control mechanism for CoAP</title>
+      <author initials="A." surname="Betzler" fullname="August Betzler">
+        <organization/>
+      </author>
+      <author initials="C." surname="Gomez" fullname="Carles Gomez">
+        <organization/>
+      </author>
+      <author initials="I." surname="Demirkol" fullname="Ilker Demirkol">
+        <organization/>
+      </author>
+      <author initials="J." surname="Paradells" fullname="Josep Paradells">
+        <organization/>
+      </author>
+      <date year="2015" month="October"/>
+    </front>
+    <seriesInfo name="DOI" value="10.1016/j.adhoc.2015.04.007"/>
+    <seriesInfo name="Ad Hoc Networks" value="vol. 33, pp. 126-139"/>
+  </reference>
+  <reference anchor="d">
+    <front>
+      <title>CoAP: An Application Protocol for Billions of Tiny Internet Nodes</title>
+      <author initials="C." surname="Bormann" fullname="Carsten Bormann">
+        <organization/>
+      </author>
+      <author initials="A." surname="Castellani" fullname="Angelo P. Castellani">
+        <organization/>
+      </author>
+      <author initials="Z." surname="Shelby" fullname="Zach Shelby">
+        <organization/>
+      </author>
+      <date year="2012" month="March"/>
+    </front>
+    <seriesInfo name="DOI" value="10.1109/mic.2012.29"/>
+    <seriesInfo name="IEEE Internet Computing" value="vol. 16, no. 2, pp. 62-67"/>
+  </reference>
+  <reference anchor="e">
+    <front>
+      <title>Congestion control in reliable CoAP communication</title>
+      <author initials="A." surname="Betzler" fullname="August Betzler">
+        <organization/>
+      </author>
+      <author initials="C." surname="Gomez" fullname="Carles Gomez">
+        <organization/>
+      </author>
+      <author initials="I." surname="Demirkol" fullname="Ilker Demirkol">
+        <organization/>
+      </author>
+      <author initials="J." surname="Paradells" fullname="Josep Paradells">
+        <organization/>
+      </author>
+      <date year="2013" month="November" day="03"/>
+    </front>
+    <seriesInfo name="DOI" value="10.1145/2507924.2507954"/>
+    <seriesInfo name="Proceedings of the 16th ACM international conference on Modeling, analysis &amp; simulation of wireless and mobile" value="systems"/>
+  </reference>
+  <reference anchor="f">
+    <front>
+      <title>A metadata classification schema for semantic content analysis of videos: A METADATA SCHEMA FOR VIDEO CONTENT ANALYSIS</title>
+      <author initials="D." surname="Shotton" fullname="D. M. Shotton">
+        <organization/>
+      </author>
+      <author initials="A." surname="Rodríguez" fullname="A. Rodríguez">
+        <organization/>
+      </author>
+      <author initials="N." surname="Guil" fullname="N. Guil">
+        <organization/>
+      </author>
+      <author initials="O." surname="Trelles" fullname="O. Trelles">
+        <organization/>
+      </author>
+      <date year="2002" month="January"/>
+    </front>
+    <seriesInfo name="DOI" value="10.1046/j.0022-2720.2001.00966.x"/>
+    <seriesInfo name="Journal of Microscopy" value="vol. 205, no. 1, pp. 33-42"/>
+  </reference>
+  <reference anchor="g">
+    <front>
+      <title>Domain Knowledge Representation in Semantic MPEG-7 Descriptions</title>
+      <author initials="C." surname="Tsinaraki" fullname="Chrisa Tsinaraki">
+        <organization/>
+      </author>
+      <author initials="S." surname="Christodoulakis" fullname="Stavros Christodoulakis">
+        <organization/>
+      </author>
+      <date year="2010" month="October" day="04"/>
+    </front>
+    <seriesInfo name="DOI" value="10.1002/9780470974582.ch12"/>
+    <seriesInfo name="The Handbook of MPEG Applications" value="pp. 293-316"/>
+  </reference>
+  <reference anchor="h">
+    <front>
+      <title>Linked data practice at different levels of semantic precision: The perspective of libraries, archives and museums: Linked Data Practice at Different Levels of Semantic Precision: The Perspective of Libraries, Archives and Museums</title>
+      <author initials="A." surname="Isaac" fullname="Antoine Isaac">
+        <organization/>
+      </author>
+      <author initials="T." surname="Baker" fullname="Thomas Baker">
+        <organization/>
+      </author>
+      <date year="2015" month="April"/>
+    </front>
+    <seriesInfo name="DOI" value="10.1002/bult.2015.1720410411"/>
+    <seriesInfo name="Bulletin of the American Society for Information Science and Technology" value="vol. 41, no. 4, pp. 34-39"/>
+  </reference>
+</root>
