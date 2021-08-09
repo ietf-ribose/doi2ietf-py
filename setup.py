@@ -3,6 +3,14 @@ import setuptools
 with open("README.md", "r", encoding="utf-8") as fh:
     long_description = fh.read()
 
+with open("requirements.txt", "r") as fh:
+    requirements = []
+    
+    for line in fh:
+        line = line.strip()
+        if line and not line[0:1] == '#':
+            requirements.append(line)
+
 setuptools.setup(
     name="doi2ietf",
     version="0.0.1",
@@ -20,7 +28,6 @@ setuptools.setup(
         "License :: Other/Proprietary License",
         "Operating System :: OS Independent",
     ],
-    package_dir={"": "src"},
-    packages=setuptools.find_packages(where="src"),
     python_requires=">=3.6",
+    install_requires=requirements,
 )
