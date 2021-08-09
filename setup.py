@@ -3,13 +3,13 @@ import setuptools
 with open("README.md", "r", encoding="utf-8") as fh:
     long_description = fh.read()
 
-with open("requirements.txt", "r") as fh:
-    requirements = []
-    
-    for line in fh:
-        line = line.strip()
-        if line and not line[0:1] == '#':
-            requirements.append(line)
+#with open("requirements.txt", "r") as fh:
+#    requirements = []
+#    
+#    for line in fh:
+#        line = line.strip()
+#        if line and not line[0:1] == '#':
+#            requirements.append(line)
 
 setuptools.setup(
     name="doi2ietf",
@@ -29,5 +29,5 @@ setuptools.setup(
         "Operating System :: OS Independent",
     ],
     python_requires=">=3.6",
-    install_requires=requirements,
+    #install_requires=requirements,
 )
