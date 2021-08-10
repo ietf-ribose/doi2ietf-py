@@ -1,19 +1,17 @@
 import setuptools
+from os import environ
 
 with open("README.md", "r", encoding="utf-8") as fh:
     long_description = fh.read()
 
-#with open("requirements.txt", "r") as fh:
-#    requirements = []
-#    
-#    for line in fh:
-#        line = line.strip()
-#        if line and not line[0:1] == '#':
-#            requirements.append(line)
+pkg_vesion = "0.0.1"
+git_tag = environ.get('GITHUB_REF', None)
+
+print('GIT TAG IN SETUP.PY:', git_tag)
 
 setuptools.setup(
     name="doi2ietf",
-    version="0.0.1",
+    version=pkg_version,
     author="",
     author_email="",
     description="This is port of Ruby doilit script to Python 3",
