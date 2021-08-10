@@ -10,7 +10,7 @@ that into IETF BibXML. IETF BibXML is the bibliographic data XML schema used by
 IETF RFC XML ([RFC 7991](https://datatracker.ietf.org/doc/html/rfc7991))
 
 The digital object identifier system (DOI) is specified in
-[ISO 26324](https://www.iso.org/standard/43506.html)) with the Registration
+[ISO 26324](https://www.iso.org/standard/43506.html) with the Registration
 Authority being the
 [International Digital Object Identifier Foundation](https://www.doi.org).
 
