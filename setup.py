@@ -4,7 +4,7 @@ from os import environ
 with open("README.md", "r", encoding="utf-8") as fh:
     long_description = fh.read()
 
-pkg_vesion = "0.0.1"
+pkg_version = "0.0.1"
 git_tag = environ.get('GITHUB_REF', None)
 
 print('GIT TAG IN SETUP.PY:', git_tag)
