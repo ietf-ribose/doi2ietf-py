@@ -17,9 +17,9 @@ if TAG_VERSION:
 setuptools.setup(
     name="doi2ietf",
     version=PKG_VERSION,
-    author="",
-    author_email="",
-    description="This is port of Ruby doilit script to Python 3",
+    author="Ribose",
+    author_email="open.source@ribose.com",
+    description="Converts DOI metadata into IETF BibXML format",
     long_description=LONG_DESCRIPTION,
     long_description_content_type="text/markdown",
     url="https://github.com/ietf-ribose/doi2ietf-py",
@@ -28,7 +28,7 @@ setuptools.setup(
     },
     classifiers=[
         "Programming Language :: Python :: 3",
-        "License :: Other/Proprietary License",
+        "License :: OSI Approved :: MIT License",
         "Operating System :: OS Independent",
     ],
     python_requires=">=3.6",
