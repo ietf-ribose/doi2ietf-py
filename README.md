@@ -1,5 +1,8 @@
 # doi2ietf: Convert DOI metadata into BibXML
 
+[![test](https://github.com/ietf-ribose/doi2ietf-py/actions/workflows/test.yml/badge.svg)](https://github.com/ietf-ribose/doi2ietf-py/actions/workflows/test.yml)
+[![release](https://github.com/ietf-ribose/doi2ietf-py/actions/workflows/release.yml/badge.svg)](https://github.com/ietf-ribose/doi2ietf-py/actions/workflows/release.yml)
+
 ## Purpose
 
 `doi2ietf` allows you to fetch bibliographic data from a DOI entry and convert
