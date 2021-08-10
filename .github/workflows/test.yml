@@ -1,15 +1,13 @@
 # This workflow will upload a Python Package using Twine when a release is created
 
-name: release
+name: test
 
 on:
   push:
-    tags:
-      - 'v*.*.*'
+  pull_request:
 
 jobs:
-  deploy:
-
+  test:
     runs-on: ubuntu-latest
 
     steps:
@@ -21,12 +19,6 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install twine
-    - name: Build package
-      run: python -m build
-    - name: Publish package
-      uses: pypa/gh-action-pypi-publish@release/v1
-      with:
-        user: ribose
-        password: ${{ secrets.RIBOSE_PYPI_API_TOKEN }}
-        repository_url: https://test.pypi.org/legacy/
+        pip install .
+    - name: Basic tests...
+      run: doi2ietf -c -x 10.1109/5.771073 10.1109/MIC.2012.29
