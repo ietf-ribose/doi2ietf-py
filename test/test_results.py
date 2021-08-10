@@ -7,6 +7,9 @@
     Author:
 """
 
+# def test_uppercase():
+#     assert "loud noises".upper() == "LOUD NOISES"
+
 import argparse
 import subprocess
 from pathlib import Path

@@ -1,42 +1,16 @@
-#!/usr/bin/env python3
-
-""" Filename:     doi2ietf.py
-    Purpose:      This file is python port of doilit script
-                  (https://github.com/cabo/kramdown-rfc2629/blob/master/bin/doilit)
-    Requirements: PyYAML, requests, requests_cache
-    Author:
-"""
-
-import sys
-import argparse
 from string import ascii_lowercase
 from calendar import month_name
-
 from xml.sax.saxutils import escape
-
-import yaml
-
-import requests
-
-try:
-    import requests_cache
-
-    CAN_CACHE = True
-
-except ImportError:
-
-    CAN_CACHE = False
-
-    print("Unable to import requests-cache, caching disabled")
-
 from simplejson.errors import JSONDecodeError
 
+import yaml
+import requests
+import sys
 
 HEADERS = {
     "Accept": "application/citeproc+json",
     "User-Agent": "DOI converter"
 }
-
 
 def make_url(doi_id):
     return "https://data.crossref.org/%s" % doi_id
@@ -115,7 +89,7 @@ def transform_doi_metadata(data):
             result["seriesinfo"][ct] = ", ".join(info)
         else:
             # https://github.com/cabo/kramdown-rfc2629/blob/d006536e2bab3aa9b8a70464710a725ca98a3051/bin/doilit#L91
-            # very strange and unsafe, need explaination:
+            # very strange and unsafe, need explanation:
             spl = ct.split(" ")
 
             result["seriesinfo"][" ".join(spl[0:-1])] = spl[-1]
@@ -129,7 +103,7 @@ def transform_doi_metadata(data):
             result["seriesinfo"][publisher] = ", ".join(info)
         else:
             # https://github.com/cabo/kramdown-rfc2629/blob/d006536e2bab3aa9b8a70464710a725ca98a3051/bin/doilit#L104
-            # very strange and unsafe, need explaination:
+            # very strange and unsafe, need explanation:
             spl = publisher.split(" ")
             result["seriesinfo"][" ".join(spl[0:-1])] = spl[-1]
 
@@ -205,8 +179,8 @@ def author_name(authors):
 
     return result
 
-
-def parse_doi_list(lst):
+# TODO: clean this up
+def parse_doi_list(lst, xml_output=False, destination=sys.stdout):
     i = 0
 
     for doi_id in lst:
@@ -231,52 +205,13 @@ def parse_doi_list(lst):
                 ascii_lowercase[i]: transform_doi_metadata(json_data)
             }
 
-            if ARGS.xml_output:
+            if xml_output:
                 print(make_xml(doi_dict))
             else:
                 yaml.safe_dump(
                     doi_dict,
-                    sys.stdout,
+                    destination,
                     allow_unicode=True,
                     default_flow_style=False
                 )
         i += 1
-
-
-PARSER = argparse.ArgumentParser(description="DOI 2 IETF converter")
-
-PARSER.add_argument(
-    "doi_id_list",
-    metavar="N",
-    type=str,
-    nargs="+",
-    help="DOI ID",
-)
-
-PARSER.add_argument(
-    "-c",
-    "--cache",
-    dest="use_cache",
-    action="store_true",
-    help="Use cache for HTTP-requests",
-)
-
-PARSER.add_argument(
-    "-x",
-    "--xml",
-    dest="xml_output",
-    action="store_true",
-    help="Output in XML",
-)
-
-ARGS = PARSER.parse_args()
-
-if ARGS.use_cache:
-    if CAN_CACHE:
-        with requests_cache.enabled():
-            parse_doi_list(ARGS.doi_id_list)
-    else:
-        print("Need installed requests-cache module for caching HTTP requests")
-
-else:
-    parse_doi_list(ARGS.doi_id_list)
