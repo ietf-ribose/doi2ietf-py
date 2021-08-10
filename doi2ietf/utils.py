@@ -1,3 +1,12 @@
+""" Filename:     utils.py
+    Purpose:      Recently used functions for python port of "doilit" ruby script.
+                  (https://github.com/cabo/kramdown-rfc2629/blob/master/bin/doilit)
+    Requirements: PyYAML, requests
+    Author:       Ribose
+"""
+
+import sys
+
 from string import ascii_lowercase
 from calendar import month_name
 from xml.sax.saxutils import escape
@@ -5,15 +14,17 @@ from simplejson.errors import JSONDecodeError
 
 import yaml
 import requests
-import sys
+
 
 HEADERS = {
     "Accept": "application/citeproc+json",
-    "User-Agent": "DOI converter"
+    "User-Agent": "doi2ietf-py"
 }
 
-def make_url(doi_id):
-    return "https://data.crossref.org/%s" % doi_id
+
+def make_url(doi):
+    # returns url of API endpoint for DOI
+    return "https://data.crossref.org/%s" % doi
 
 
 def make_date_attrs(date_str):
@@ -179,9 +190,18 @@ def author_name(authors):
 
     return result
 
-# TODO: clean this up
-def parse_doi_list(lst, xml_output=False, destination=sys.stdout):
-    i = 0
+
+def fetch_doi_data(lst):
+    """Gets data by Digital Object Identifier list via API of data.crossref.org
+
+    Args:
+        lst: List of DOI.
+
+    Returns:
+        List, each element is dict converted from JSON
+    """
+
+    json_lst = []
 
     for doi_id in lst:
         doi_url = make_url(doi_id)
@@ -190,28 +210,105 @@ def parse_doi_list(lst, xml_output=False, destination=sys.stdout):
 
         try:
             req = requests.get(doi_url, headers=HEADERS)
-        except:
-            pass
 
-        try:
-            json_data = req.json()
+        except requests.exceptions.RequestException as err:
+            print("Unable to get %s" % doi_url)
+            print(err)
 
-        except JSONDecodeError:
-            print("Unable to decode response from: %s " % doi_url)
+            # raise SystemExit(err) ?
 
-        if json_data:
-            # ascii enumerate:
-            doi_dict = {
-                ascii_lowercase[i]: transform_doi_metadata(json_data)
-            }
+        else:
+            try:
+                json_data = req.json()
 
-            if xml_output:
-                print(make_xml(doi_dict))
-            else:
+            except JSONDecodeError:
+                print("Unable to decode response from: %s " % doi_url)
+
+                # raise SystemExit(err) ?
+
+            if json_data:
+                json_lst.append(json_data)
+
+    return json_lst
+
+
+def parse_doi_data(data_lst, xml_output=False):
+    """Gets list of dicts with DOI metadata and converts it YAML or BibXML
+
+    Args:
+        data_lst: List of dicts with DOI metadata.
+        xml_output: Flag used if BibXML output requested.
+
+    Returns:
+        List of strings, each element is YAML or BibXML (depends on xml_output)
+    """
+
+    i = 0
+    output = []
+
+    for doi_data in data_lst:
+
+        # ascii enumerate, as it made at original doilit:
+        doi_dict = {
+            ascii_lowercase[i]: transform_doi_metadata(doi_data)
+        }
+
+        i += 1
+
+        if xml_output:
+            output.append(make_xml(doi_dict))
+        else:
+            output.append(
                 yaml.safe_dump(
                     doi_dict,
-                    destination,
                     allow_unicode=True,
                     default_flow_style=False
                 )
-        i += 1
+            )
+
+    return output
+
+
+def process_doi_list(lst, xml_output=False):
+    """Gets data by Digital Object Identifier list via API of data.crossref.org
+
+    Args:
+        lst: List of DOI.
+        xml_output: Flag used if BibXML output requested.
+
+    Returns:
+        List of strings, each element is YAML or BibXML (depends on xml_output)
+    """
+
+    data_lst = fetch_doi_data(lst)
+
+    return parse_doi_data(data_lst, xml_output)
+
+
+def output_doi_data(lst, destination=sys.stdout):
+    """Outputs result of process_doi_list to "destination" handler
+
+    Args:
+        lst: List of strings to output.
+        destination: Output handler.
+    """
+
+    for doi_data in lst:
+        print(doi_data, file=destination)
+
+
+def handle_cli_call(lst, xml_output=False, destination=sys.stdout):
+    """Gets arguments form CLI interface and pass it to process_doi_list(),
+       then pass results to output_doi_data()
+
+    Args:
+        data_lst: List of dicts with DOI metadata.
+        xml_output: Flag used if BibXML output requested.
+        destination: Output handler.
+
+    Returns:
+        None, output will be passed to "destination" handler
+    """
+
+    doi_data = process_doi_list(lst, xml_output)
+    output_doi_data(doi_data, destination)

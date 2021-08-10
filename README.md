@@ -71,14 +71,14 @@ $ doi2ietf -c -x 10.1109/5.771073 10.1109/MIC.2012.29
 
 ### Library
 
-The main function provided by the `doi2ietf` library is `parse_doi_list`.
+The main function provided by the `doi2ietf` library is `process_doi_list`.
 
 It can be used in the following manner, for example:
 
 ```sh
 $ python
 >>> import doi2ietf
->>> doi2ietf.parse_doi_list(['10.1109/5.771073'])
+>>> doi2ietf.process_doi_list(['10.1109/5.771073'])
 a:
   author:
   - ins: N. Paskin
@@ -88,11 +88,11 @@ a:
     DOI: 10.1109/5.771073
     Proceedings of the IEEE: vol. 87, no. 7, pp. 1208-1227
   title: Toward unique identifiers
->>> doi2ietf.parse_doi_list(['10.1109/5.771073'],True)
+>>> doi2ietf.process_doi_list(['10.1109/5.771073'],True)
 <reference anchor="a"><front><title>Toward unique identifiers</title>...
 ```
 
-`parse_doi_list` takes the following arguments:
+`process_doi_list` takes the following arguments:
 
 * list of DOI identifiers as strings
 * output as XML, a Boolean value (`True` for XML, `False` for YAML as default)

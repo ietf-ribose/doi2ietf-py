@@ -1,15 +1,16 @@
 #!/usr/bin/env python3
 
-""" Filename:     doi2ietf.py
-    Purpose:      This file is python port of doilit script
-                  (https://github.com/cabo/kramdown-rfc2629/blob/master/bin/doilit)
-    Requirements: PyYAML, requests, requests_cache
+""" Filename:     command_line.py
+    Purpose:      This file is CLI interface to doi2ietf
+    Requirements: requests_cache
     Author:       Ribose
 """
 
 import sys
 import argparse
-from .utils import parse_doi_list
+
+from utils import handle_cli_call
+
 
 def main():
     try:
@@ -26,11 +27,11 @@ def main():
     PARSER = argparse.ArgumentParser(description="DOI 2 IETF converter")
 
     PARSER.add_argument(
-        "doi_id_list",
-        metavar="N",
+        "doi_list",
+        metavar="DOI",
         type=str,
         nargs="+",
-        help="DOI ID",
+        help="List of DOI",
     )
 
     PARSER.add_argument(
@@ -54,12 +55,13 @@ def main():
     if ARGS.use_cache:
         if CAN_CACHE:
             with requests_cache.enabled():
-                parse_doi_list(ARGS.doi_id_list, ARGS.xml_output)
+                handle_cli_call(ARGS.doi_list, ARGS.xml_output)
         else:
             print("Need installed requests-cache module for caching HTTP requests")
 
     else:
-        parse_doi_list(ARGS.doi_id_list, ARGS.xml_output, sys.stdout)
+        handle_cli_call(ARGS.doi_list, ARGS.xml_output, sys.stdout)
+
 
 if __name__ == "__main__":
     sys.exit(main())
