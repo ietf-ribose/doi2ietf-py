@@ -1,21 +1,26 @@
-import setuptools
+import re
 from os import environ
 
+import setuptools
+
 with open("README.md", "r", encoding="utf-8") as fh:
-    long_description = fh.read()
+    LONG_DESCRIPTION = fh.read()
 
-pkg_version = "0.0.1"
-git_tag = environ.get('GITHUB_REF', None)
+PKG_VERSION = "0.0.1"
 
-print('GIT TAG IN SETUP.PY:', git_tag)
+GIT_TAG = environ.get("GITHUB_REF", "")
+TAG_VERSION = re.match(r'^refs/tags/v([0-9]+\.[0-9a-z]+\.[0-9a-z]+)$', GIT_TAG)
+
+if TAG_VERSION:
+    PKG_VERSION = TAG_VERSION.group(1)
 
 setuptools.setup(
     name="doi2ietf",
-    version=pkg_version,
+    version=PKG_VERSION,
     author="",
     author_email="",
     description="This is port of Ruby doilit script to Python 3",
-    long_description=long_description,
+    long_description=LONG_DESCRIPTION,
     long_description_content_type="text/markdown",
     url="https://github.com/ietf-ribose/doi2ietf-py",
     project_urls={
@@ -27,5 +32,4 @@ setuptools.setup(
         "Operating System :: OS Independent",
     ],
     python_requires=">=3.6",
-    #install_requires=requirements,
 )
