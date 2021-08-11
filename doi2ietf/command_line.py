@@ -9,7 +9,7 @@
 import sys
 import argparse
 
-from utils import handle_cli_call
+from .utils import handle_cli_call
 
 
 def main():

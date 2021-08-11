@@ -44,7 +44,6 @@ setuptools.setup(
     ],
     tests_require=[
       'pytest',
-      'lxml'
       'xmldiff',
     ],
     entry_points={
