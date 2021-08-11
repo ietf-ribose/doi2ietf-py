@@ -1,0 +1,15 @@
+  a:
+    seriesinfo:
+      Proceedings of the 16th ACM international conference on Modeling, analysis & simulation of wireless and mobile: systems
+      DOI: 10.1145/2507924.2507954
+    title: Congestion control in reliable CoAP communication
+    author:
+    - name: August Betzler
+      ins: A. Betzler
+    - name: Carles Gomez
+      ins: C. Gomez
+    - name: Ilker Demirkol
+      ins: I. Demirkol
+    - name: Josep Paradells
+      ins: J. Paradells
+    date: '2013-11-03'

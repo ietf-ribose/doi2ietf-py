@@ -1,0 +1,20 @@
+<reference anchor="a" >
+  <front>
+    <title>CoCoA+: An advanced congestion control mechanism for CoAP</title>
+    <author initials="A." surname="Betzler" fullname="August Betzler">
+      <organization></organization>
+    </author>
+    <author initials="C." surname="Gomez" fullname="Carles Gomez">
+      <organization></organization>
+    </author>
+    <author initials="I." surname="Demirkol" fullname="Ilker Demirkol">
+      <organization></organization>
+    </author>
+    <author initials="J." surname="Paradells" fullname="Josep Paradells">
+      <organization></organization>
+    </author>
+    <date year="2015" month="October"/>
+  </front>
+  <seriesInfo name="Ad Hoc Networks" value="vol. 33, pp. 126-139"/>
+  <seriesInfo name="DOI" value="10.1016/j.adhoc.2015.04.007"/>
+</reference>

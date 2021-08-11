@@ -1,0 +1,11 @@
+<reference anchor="a" >
+  <front>
+    <title>Networks of 'things'</title>
+    <author initials="J." surname="Voas" fullname="Jeffrey M Voas">
+      <organization></organization>
+    </author>
+    <date year="2016"/>
+  </front>
+  <seriesInfo name="National Institute of Standards and Technology" value="report"/>
+  <seriesInfo name="DOI" value="10.6028/nist.sp.800-183"/>
+</reference>

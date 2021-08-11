@@ -1,0 +1,14 @@
+<reference anchor="a" >
+  <front>
+    <title>Domain Knowledge Representation in Semantic MPEG-7 Descriptions</title>
+    <author initials="C." surname="Tsinaraki" fullname="Chrisa Tsinaraki">
+      <organization></organization>
+    </author>
+    <author initials="S." surname="Christodoulakis" fullname="Stavros Christodoulakis">
+      <organization></organization>
+    </author>
+    <date year="2010" month="October" day="04"/>
+  </front>
+  <seriesInfo name="The Handbook of MPEG Applications" value="pp. 293-316"/>
+  <seriesInfo name="DOI" value="10.1002/9780470974582.ch12"/>
+</reference>

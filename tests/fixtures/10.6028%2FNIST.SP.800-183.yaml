@@ -1,0 +1,9 @@
+  a:
+    seriesinfo:
+      National Institute of Standards and Technology: report
+      DOI: 10.6028/nist.sp.800-183
+    title: Networks of 'things'
+    author:
+    - name: Jeffrey M Voas
+      ins: J. Voas
+    date: '2016'

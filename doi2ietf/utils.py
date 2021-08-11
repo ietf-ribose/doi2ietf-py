@@ -203,8 +203,8 @@ def fetch_doi_data(lst):
 
     json_lst = []
 
-    for doi_id in lst:
-        doi_url = make_url(doi_id)
+    for doi in lst:
+        doi_url = make_url(doi)
 
         json_data = None
 

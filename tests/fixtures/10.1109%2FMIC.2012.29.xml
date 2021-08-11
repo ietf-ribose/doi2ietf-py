@@ -1,0 +1,17 @@
+<reference anchor="a" >
+  <front>
+    <title>CoAP: An Application Protocol for Billions of Tiny Internet Nodes</title>
+    <author initials="C." surname="Bormann" fullname="Carsten Bormann">
+      <organization></organization>
+    </author>
+    <author initials="A." surname="Castellani" fullname="Angelo P. Castellani">
+      <organization></organization>
+    </author>
+    <author initials="Z." surname="Shelby" fullname="Zach Shelby">
+      <organization></organization>
+    </author>
+    <date year="2012" month="March"/>
+  </front>
+  <seriesInfo name="IEEE Internet Computing" value="vol. 16, no. 2, pp. 62-67"/>
+  <seriesInfo name="DOI" value="10.1109/mic.2012.29"/>
+</reference>

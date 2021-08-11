@@ -1,0 +1,15 @@
+  a:
+    seriesinfo:
+      Ad Hoc Networks: vol. 33, pp. 126-139
+      DOI: 10.1016/j.adhoc.2015.04.007
+    title: 'CoCoA+: An advanced congestion control mechanism for CoAP'
+    author:
+    - name: August Betzler
+      ins: A. Betzler
+    - name: Carles Gomez
+      ins: C. Gomez
+    - name: Ilker Demirkol
+      ins: I. Demirkol
+    - name: Josep Paradells
+      ins: J. Paradells
+    date: 2015-10

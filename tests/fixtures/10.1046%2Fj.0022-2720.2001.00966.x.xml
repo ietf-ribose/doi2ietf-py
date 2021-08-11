@@ -1,0 +1,20 @@
+<reference anchor="a" >
+  <front>
+    <title>A metadata classification schema for semantic content analysis of videos: A METADATA SCHEMA FOR VIDEO CONTENT ANALYSIS</title>
+    <author initials="D." surname="Shotton" fullname="D. M. Shotton">
+      <organization></organization>
+    </author>
+    <author initials="A." surname="Rodríguez" fullname="A. Rodríguez">
+      <organization></organization>
+    </author>
+    <author initials="N." surname="Guil" fullname="N. Guil">
+      <organization></organization>
+    </author>
+    <author initials="O." surname="Trelles" fullname="O. Trelles">
+      <organization></organization>
+    </author>
+    <date year="2002" month="January"/>
+  </front>
+  <seriesInfo name="Journal of Microscopy" value="vol. 205, no. 1, pp. 33-42"/>
+  <seriesInfo name="DOI" value="10.1046/j.0022-2720.2001.00966.x"/>
+</reference>

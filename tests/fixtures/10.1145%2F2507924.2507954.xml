@@ -1,0 +1,20 @@
+<reference anchor="a" >
+  <front>
+    <title>Congestion control in reliable CoAP communication</title>
+    <author initials="A." surname="Betzler" fullname="August Betzler">
+      <organization></organization>
+    </author>
+    <author initials="C." surname="Gomez" fullname="Carles Gomez">
+      <organization></organization>
+    </author>
+    <author initials="I." surname="Demirkol" fullname="Ilker Demirkol">
+      <organization></organization>
+    </author>
+    <author initials="J." surname="Paradells" fullname="Josep Paradells">
+      <organization></organization>
+    </author>
+    <date year="2013" month="November" day="03"/>
+  </front>
+  <seriesInfo name="Proceedings of the 16th ACM international conference on Modeling, analysis &amp; simulation of wireless and mobile" value="systems"/>
+  <seriesInfo name="DOI" value="10.1145/2507924.2507954"/>
+</reference>

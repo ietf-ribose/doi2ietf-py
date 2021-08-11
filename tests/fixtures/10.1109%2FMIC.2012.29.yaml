@@ -1,0 +1,13 @@
+  a:
+    seriesinfo:
+      IEEE Internet Computing: vol. 16, no. 2, pp. 62-67
+      DOI: 10.1109/mic.2012.29
+    title: 'CoAP: An Application Protocol for Billions of Tiny Internet Nodes'
+    author:
+    - name: Carsten Bormann
+      ins: C. Bormann
+    - name: Angelo P. Castellani
+      ins: A. Castellani
+    - name: Zach Shelby
+      ins: Z. Shelby
+    date: 2012-03

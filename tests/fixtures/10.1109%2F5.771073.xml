@@ -1,0 +1,11 @@
+<reference anchor="a" >
+  <front>
+    <title>Toward unique identifiers</title>
+    <author initials="N." surname="Paskin" fullname="N. Paskin">
+      <organization></organization>
+    </author>
+    <date year="1999" month="July"/>
+  </front>
+  <seriesInfo name="Proceedings of the IEEE" value="vol. 87, no. 7, pp. 1208-1227"/>
+  <seriesInfo name="DOI" value="10.1109/5.771073"/>
+</reference>
