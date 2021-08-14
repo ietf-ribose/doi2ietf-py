@@ -27,6 +27,6 @@ jobs:
     - name: Publish package
       uses: pypa/gh-action-pypi-publish@release/v1
       with:
-        user: ribose
+        user: __token__
         password: ${{ secrets.RIBOSE_PYPI_API_TOKEN }}
         repository_url: https://test.pypi.org/legacy/
