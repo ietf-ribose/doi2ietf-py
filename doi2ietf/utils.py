@@ -69,7 +69,11 @@ def transform_doi_metadata(data):
             result["title"] += ": "
             result["title"] += "; ".join(data["subtitle"])
 
-    result["author"] = author_name(data["author"])
+    if "author" in data:
+        result["author"] = author_name(data["author"])
+
+    if "editor" in data:
+        result["editor"] = author_name(data["editor"])
 
     if "issued" in data:
         _issued = data.get("issued", {})
@@ -132,25 +136,14 @@ def make_xml(data):
         output += '<title>'
         output += escape(data[ref]['title'])
         output += '</title>'
-        for author in data[ref]['author']:
-            if 'ins' in author:
-                output += '<author '
-                output += 'initials="%s" surname="%s" fullname="%s">' % (
-                    escape(author['ins'][0:2]),
-                    escape(author['ins'][2:]).strip(),
-                    escape(author['name'])
-                )
 
-            else:
-                # https://github.com/cabo/kramdown-rfc2629/blob/d006536e2bab3aa9b8a70464710a725ca98a3051/lib/kramdown-rfc/refxml.rb#L50
-                # do we need to copy that "heuristic" method?
-                output += '<author surname="%s">' % (
-                    escape(author['name'])
-                )
+        if 'author' in data[ref]:
+            for author in data[ref]['author']:
+                output += xml_author_tag(author)
 
-            # organization empty: because input field is always empty
-            output += '<organization></organization>'
-            output += '</author>'
+        if 'editor' in data[ref]:
+            for editor in data[ref]['editor']:
+                output += xml_author_tag(editor, 'editor')
 
         date_attr = make_date_attrs(data[ref]['date'])
 
@@ -165,6 +158,36 @@ def make_xml(data):
             )
 
         output += '</reference>'
+
+    return output
+
+
+def xml_author_tag(person, role=''):
+    output = ''
+
+    if 'ins' in person:
+        output += '<author '
+        output += 'initials="%s" surname="%s" fullname="%s"' % (
+            escape(person['ins'][0:2]),
+            escape(person['ins'][2:]).strip(),
+            escape(person['name'])
+        )
+
+    else:
+        # https://github.com/cabo/kramdown-rfc2629/blob/d006536e2bab3aa9b8a70464710a725ca98a3051/lib/kramdown-rfc/refxml.rb#L50
+        # do we need to copy that "heuristic" method?
+        output += '<author surname="%s"' % (
+            escape(person['name'])
+        )
+
+    if role:
+        output += ' role="%s">' % escape(role)
+    else:
+        output += '>'
+
+    # organization empty: because input field is always empty
+    output += '<organization></organization>'
+    output += '</author>'
 
     return output
 
