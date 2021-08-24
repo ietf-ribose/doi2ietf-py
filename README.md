@@ -113,19 +113,10 @@ Dependencies are listed inside `setup.py`.
 
 ### Testing
 
-TODO: to change to PyTest.
+Test modules are placed under the `tests` directory. It uses data from `tests/fixtures` directory.
 
-To test and compare results you can use additional script
-`test/test_results.py`.
+There is 3 type of files: `*.json`, `*.yaml` and `*.xml`.
 
-Before start you need to edit and save config. Copy `config.py.sample` to
-`config.py` and edit values. At least you should write correct path to `doilit`
-at `path_to_ruby_doilit` variable. If this script not available, you can test
-and compare values saved at `path_to_test_output_dir`.
-
-To fetch new values via the Ruby `doilit` script you need to use `-nc` or
-`--no-cache` option:
-
-```sh
-./test/test_results.py -nc
-```
+* `*.json` - is body of HTTP(S) response from `data.crossref.org`
+* `*.yaml` - is original `doilit` output
+* `*.xml` - is original `doilit` output with `-x=xmlhandle` option
