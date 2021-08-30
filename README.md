@@ -78,6 +78,7 @@ It can be used in the following manner, for example:
 ```sh
 $ python
 >>> import doi2ietf
+
 >>> doi2ietf.process_doi_list(['10.1109/5.771073'])
 a:
   author:
@@ -88,15 +89,16 @@ a:
     DOI: 10.1109/5.771073
     Proceedings of the IEEE: vol. 87, no. 7, pp. 1208-1227
   title: Toward unique identifiers
->>> doi2ietf.process_doi_list(['10.1109/5.771073'],True)
+
+>>> doi2ietf.process_doi_list(['10.1109/5.771073'], 'XML')
 <reference anchor="a"><front><title>Toward unique identifiers</title>...
 ```
 
 `process_doi_list` takes the following arguments:
 
 * list of DOI identifiers as strings
-* output as XML, a Boolean value (`True` for XML, `False` for YAML as default)
-* stream output handle, by default it writes to `sys.stdout`.
+* output format. Can be `XML` for XML strings, `DICT` for python dict objects, and `YAML` or `None` for YAML strings as default)
+
 
 ## Development
 
@@ -114,6 +116,8 @@ Dependencies are listed inside `setup.py`.
 ### Testing
 
 Test modules are placed under the `tests` directory. It uses data from `tests/fixtures` directory.
+Python `xmldiff` module is required for this tests. It was commented out in `requirements.txt`.
+
 
 There is 3 type of files: `*.json`, `*.yaml` and `*.xml`.
 

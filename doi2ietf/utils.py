@@ -255,7 +255,7 @@ def fetch_doi_data(lst):
     return json_lst
 
 
-def parse_doi_data(data_lst, xml_output=False):
+def parse_doi_data(data_lst, output_format=False):
     """Gets list of dicts with DOI metadata and converts it YAML or BibXML
 
     Args:
@@ -278,8 +278,11 @@ def parse_doi_data(data_lst, xml_output=False):
 
         i += 1
 
-        if xml_output:
+        if output_format == 'XML':
             output.append(make_xml(doi_dict))
+        elif output_format == 'DICT':
+            output.append(doi_dict)
+        # default format:
         else:
             output.append(
                 yaml.safe_dump(
@@ -292,20 +295,20 @@ def parse_doi_data(data_lst, xml_output=False):
     return output
 
 
-def process_doi_list(lst, xml_output=False):
+def process_doi_list(lst, output_format='YAML'):
     """Gets data by Digital Object Identifier list via API of data.crossref.org
 
     Args:
         lst: List of DOI.
-        xml_output: Flag used if BibXML output requested.
+        output_format: Output format. YAML, DICT or XML (BibXML)
 
     Returns:
-        List of strings, each element is YAML or BibXML (depends on xml_output)
+        List of strings, each element is YAML, DICT or XML (depends on output_format)
     """
 
     data_lst = fetch_doi_data(lst)
 
-    return parse_doi_data(data_lst, xml_output)
+    return parse_doi_data(data_lst, output_format)
 
 
 def output_doi_data(lst, destination=sys.stdout):
@@ -333,5 +336,10 @@ def handle_cli_call(lst, xml_output=False, destination=sys.stdout):
         None, output will be passed to "destination" handler
     """
 
-    doi_data = process_doi_list(lst, xml_output)
+    if xml_output:
+        output_format = 'XML'
+    else:
+        output_format = 'YAML'
+
+    doi_data = process_doi_list(lst, output_format)
     output_doi_data(doi_data, destination)
