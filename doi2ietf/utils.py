@@ -241,6 +241,10 @@ def fetch_doi_data(lst):
             # raise SystemExit(err) ?
 
         else:
+            if req.status_code == 503:
+                raise RuntimeError("Source is unavailable (503)")
+            if req.status_code == 500:
+                raise RuntimeError("Source reports server error (500)")
             try:
                 json_data = req.json()
 
