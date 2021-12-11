@@ -235,18 +235,23 @@ def fetch_doi_data(lst):
             req = requests.get(doi_url, headers=HEADERS)
 
         except requests.exceptions.RequestException as err:
-            print("Unable to get %s" % doi_url)
-            print(err)
-
+            raise
+            # print("Unable to get %s" % doi_url)
+            # print(err)
             # raise SystemExit(err) ?
 
         else:
+            if req.status_code == 503:
+                raise RuntimeError("Source is unavailable (503)")
+            if req.status_code == 500:
+                raise RuntimeError("Source reports server error (500)")
             try:
                 json_data = req.json()
 
+            # TODO: Can use requests.exceptions.JSONDecodeError when it’s released
             except JSONDecodeError:
-                print("Unable to decode response from: %s " % doi_url)
-
+                raise
+                # print("Unable to decode response from: %s " % doi_url)
                 # raise SystemExit(err) ?
 
             if json_data:
