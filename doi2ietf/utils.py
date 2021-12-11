@@ -248,6 +248,7 @@ def fetch_doi_data(lst):
             try:
                 json_data = req.json()
 
+            # TODO: Can use requests.exceptions.JSONDecodeError when it’s released
             except JSONDecodeError:
                 raise
                 # print("Unable to decode response from: %s " % doi_url)
